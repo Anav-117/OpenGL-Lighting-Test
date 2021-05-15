@@ -1,5 +1,6 @@
 #ifndef SHADER_H
 #define SHADER_H
+#define _CRT_SECURE_NO_WARNINGS
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -13,7 +14,7 @@ class Shader {
 public:
 	unsigned int  ID;
 
-	Shader(const char* vertexPath, const char* fragmentPath);
+	Shader(const char* vertexPath, const char* fragmentPath, std::string parameters);
 	void use(); //activate shader
 	void setBool(const std::string &name, bool value) const;
 	void setInt(const std::string &name, int value) const;

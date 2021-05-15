@@ -52,6 +52,9 @@
     <None Include="objectShader.vs">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="FinalObjectShader.fs">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="textures\container.png">
