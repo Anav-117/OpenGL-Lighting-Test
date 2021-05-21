@@ -1,11 +1,10 @@
 #include "Shader.h"
 
-Shader::Shader(const char* vertexPath, const char* fragmentPath, std::string parameters) {
+Shader::Shader(const char* vertexPath, const char* fragmentPath) {
 	std::string vertexCode;
 	std::string fragmentCode;
 	std::ifstream vShaderFile;
 	std::ifstream fShaderFile;
-	std::string version = "#version 330 core\n";
 
 	vShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
 	fShaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
@@ -21,8 +20,8 @@ Shader::Shader(const char* vertexPath, const char* fragmentPath, std::string par
 		vShaderFile.close();
 		fShaderFile.close();
 
-		vertexCode = version + vShaderStream.str();
-		fragmentCode = version + parameters + fShaderStream.str();
+		vertexCode = vShaderStream.str();
+		fragmentCode = fShaderStream.str();
 	}
 	catch (std::ifstream::failure e) {
 		std::cout << "ERROR::SHADER::FILE_NOT_SUCCESSFULLY_READ" << std::endl;

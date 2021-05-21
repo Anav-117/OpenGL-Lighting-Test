@@ -1,14 +1,12 @@
 ﻿  Source.cpp
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(183,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(207,61): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(214,125): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(214,96): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(214,67): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(321,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(322,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(326,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(327,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(329,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(330,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(336,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Mesh.h(84,1): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(153,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(177,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(257,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(258,11): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(262,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(263,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(265,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(266,10): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\Source.cpp(272,28): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Lighting.vcxproj -> C:\Users\anav2\Desktop\Git\OpenGL-Lighting-Test\Lighting\x64\Debug\Lighting.exe

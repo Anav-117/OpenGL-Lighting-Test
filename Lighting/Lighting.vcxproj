@@ -80,8 +80,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\include;C:\Users\anav2\Desktop\OpenGL\glm-0.9.9.8;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\include;C:\Users\anav2\Desktop\OpenGL\glm-0.9.9.8;C:\Users\anav2\Desktop\OpenGL\assimp-3.1.1-win-binaries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\lib;C:\Users\anav2\Desktop\OpenGL\assimp-3.1.1-win-binaries\lib64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -125,7 +125,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,20 +152,39 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assimp.dll" />
+    <None Include="backpack\backpack.mtl" />
     <None Include="FinalObjectShader.fs" />
     <None Include="lightShader.fs" />
     <None Include="lightShader.vs" />
+    <None Include="modelShader.fs" />
+    <None Include="modelShader.vs" />
     <None Include="objectShader.fs" />
     <None Include="objectShader.vs" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="backpack\ao.jpg" />
+    <Image Include="backpack\diffuse.jpg" />
+    <Image Include="backpack\normal.png" />
+    <Image Include="backpack\roughness.jpg" />
+    <Image Include="backpack\specular.jpg" />
     <Image Include="textures\container.png" />
     <Image Include="textures\container2_specular.png" />
     <Image Include="textures\matrix.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="backpack\source_attribution.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="backpack\backpack.obj">
+      <FileType>Document</FileType>
+    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

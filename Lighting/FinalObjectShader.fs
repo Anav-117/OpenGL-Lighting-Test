@@ -1,3 +1,5 @@
+#version 330 core
+#define NR_POINT_LIGHTS 2
 out vec4 FragColor;
 
 in vec3 Normal;
@@ -56,12 +58,14 @@ vec3 CalcDirLight(DirLight light, vec3 Normal, vec3 ViewDir);
 vec3 CalcPointLight(PointLight light, vec3 Normal, vec3 FragPos, vec3 ViewDir);
 vec3 CalcSpotLight(SpotLight light, vec3 Normal, vec3 FragPos, vec3 ViewDir);
 
+float intensity = 0.0f;
+
 void main(){
 	vec3 norm = normalize(Normal);
 	vec3 ViewDir = normalize(viewPos - FragPos);
 
 	//Directional Lighting
-	vec3 result = CalcDirLight(dirLight, norm, ViewDir);
+	vec3 result = vec3(0.0f);//CalcDirLight(dirLight, norm, ViewDir);
 
 	//Point Lights
 	for (int i=0; i < NR_POINT_LIGHTS; i++) {
@@ -69,9 +73,9 @@ void main(){
 	}
 
 	//SpotLight
-	result += CalcSpotLight(spotLight, norm, FragPos, ViewDir);
+	//result += CalcSpotLight(spotLight, norm, FragPos, ViewDir);
 
-	FragColor = vec4(result, 1.0f);
+	FragColor = vec4(result, 1.0f);//-intensity);
 }
 
 vec3 CalcDirLight(DirLight light, vec3 Normal, vec3 ViewDir) {
@@ -115,7 +119,10 @@ vec3 CalcSpotLight (SpotLight light, vec3 Normal, vec3 FragPos, vec3 ViewDir) {
 	float distance = length(light.position - FragPos);
     float theta = dot(lightDir, normalize(-light.direction));
     float epsilon = light.cutOff - light.outerCutOff;
-    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+    
+	if (dot(Normal, lightDir) > 0.0) {
+		intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+	}
 	
 	float diff = max(dot(Normal, lightDir), 0.0);
 	
@@ -132,13 +139,9 @@ vec3 CalcSpotLight (SpotLight light, vec3 Normal, vec3 FragPos, vec3 ViewDir) {
 	diffuse *= attenuation;
 	specular *= attenuation;
 
-	if (theta > light.cutOff) {
-			return (ambient + diffuse + specular);
-	}
-   else {
-			ambient *= intensity;
-			diffuse *= intensity;
-			specular *= intensity;
-		  return (ambient + diffuse + specular);
-   }
+	ambient *= intensity;
+	diffuse *= intensity;
+	specular *= intensity;
+
+	return (ambient + diffuse + specular);
 }
