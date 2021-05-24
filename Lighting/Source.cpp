@@ -30,7 +30,7 @@ float lastFrame = 0.0f;
 glm::vec3 lightSourcePos = glm::vec3(0.5f, 0.0f, 2.0f);
 
 float SpotLightInnerCutOff = 10.0f, SpotLightOuterCutOff = 12.5f;
-int NR_POINT_LIGHTS = 2;
+int NR_POINT_LIGHTS = 4;
 
 int main() {
 	//INITIALIZING GLFW
@@ -113,14 +113,14 @@ int main() {
 	};
 
 	glm::vec3 pointLightPositions[] = {
-	glm::vec3(0.0f,  0.0f,  3.0f),
-	glm::vec3(0.0f, -3.0f, 0.0f),
-	glm::vec3(-4.0f,  2.0f, -12.0f),
-	glm::vec3(0.0f,  0.0f, -3.0f)
+		glm::vec3(0.7f,  0.2f,  2.0f),
+		glm::vec3(2.3f, -3.3f, -4.0f),
+		glm::vec3(-4.0f,  2.0f, -12.0f),
+		glm::vec3(0.0f,  0.0f, -3.0f)
 	};
 
 	glm::vec3 pointLightColors[] = {
-	glm::vec3(0.2f, 0.2f, 0.6f),
+	glm::vec3(0.8f, 0.8f, 0.6f),
 	glm::vec3(0.3f, 0.3f, 0.7f),
 	glm::vec3(0.0f, 0.0f, 0.3f),
 	glm::vec3(0.4f, 0.4f, 0.4f)
@@ -156,6 +156,9 @@ int main() {
 				
 		processInput(window);
 
+		pointLightPositions[0].z = 2.0 * sin(glfwGetTime());
+		pointLightPositions[0].y = 2.0 * cos(glfwGetTime());
+
 		//lightSourcePos = glm::vec3(1.414*(float)sin(glfwGetTime()), 0.0f, 1.414*(float)cos(glfwGetTime()));
 
 		// render
@@ -165,7 +168,7 @@ int main() {
 
 		myShader.use();
 
-		myShader.setFloat("material.shininess", 31.0f);
+		//myShader.setFloat("material.shininess", 31.0f);
 
 		//Setting up Directional Light
 		myShader.setVec3("dirLight.ambient", 0.1f, 0.1f, 0.1f);
@@ -176,14 +179,25 @@ int main() {
 		//Setting up Point Lights
 		for (unsigned int i = 0; i < NR_POINT_LIGHTS; i++) {
 			std::string name = "pointLight[" + std::to_string(i) + "].";
-			myShader.setVec3(name + "ambient", 0.1f, 0.1f, 0.1f);
-			myShader.setVec3(name + "diffuse", 1.0f, 1.0f, 1.0f); // darken diffuse light a bit
+			myShader.setVec3(name + "ambient", pointLightColors[i] * 0.1f);
+			myShader.setVec3(name + "diffuse", pointLightColors[i]); // darken diffuse light a bit
 			myShader.setVec3(name + "specular", 1.0f, 1.0f, 1.0f);
 			myShader.setVec3(name + "position", pointLightPositions[i]);
 			myShader.setFloat(name + "AttConstant", 1.0f);
 			myShader.setFloat(name + "AttLinear", 0.09f);
 			myShader.setFloat(name + "AttQuadratic", 0.032f);
 		}
+
+		//myShader.setVec3("spotLight.ambient", 0.1f, 0.1f, 0.1f);
+		//myShader.setVec3("spotLight.diffuse", 1.0f, 1.0f, 1.0f); // darken diffuse light a bit
+		//myShader.setVec3("spotLight.specular", 1.0f, 1.0f, 1.0f);
+		//myShader.setVec3("spotLight.position", camera.Position);
+		//myShader.setVec3("spotLight.direction", camera.Front);
+		//myShader.setFloat("spotLight.AttConstant", 1.0f);
+		//myShader.setFloat("spotLight.AttLinear", 0.09f);
+		//myShader.setFloat("spotLight.AttQuadratic", 0.032f);
+		//myShader.setFloat("spotLight.cutOff", 12.5f);
+		//myShader.setFloat("spotLight.outerCutOff", 17.5f);
 
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
@@ -198,12 +212,15 @@ int main() {
 		myModel.Draw(myShader);
 
 		LightCubeShader.use();
+		LightCubeShader.setMat4("view", view);
+		LightCubeShader.setMat4("projection", projection);
 
 		for (int i = 0; i < NR_POINT_LIGHTS; i++) {
 			model = glm::mat4(1.0f);
 			model = glm::translate(model, pointLightPositions[i]);
 			model = glm::scale(model, glm::vec3(0.2f));
 			LightCubeShader.setMat4("model", model);
+			LightCubeShader.setVec3("Color", pointLightColors[i]);
 
 			//render the cube
 			glBindVertexArray(lightVAO);
