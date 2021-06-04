@@ -4,6 +4,7 @@
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
+#include <vector>
 
 #include <string>
 #include <fstream>
@@ -15,6 +16,7 @@ public:
 	unsigned int  ID;
 
 	Shader(const char* vertexPath, const char* fragmentPath);
+	Shader(const char* vertexPath, const char* fragmentPath, const char* geometryPath);
 	void use(); //activate shader
 	void setBool(const std::string &name, bool value) const;
 	void setInt(const std::string &name, int value) const;
