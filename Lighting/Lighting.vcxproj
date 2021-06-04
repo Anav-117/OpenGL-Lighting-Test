@@ -80,8 +80,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\include;C:\Users\anav2\Desktop\OpenGL\glm-0.9.9.8;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\include;C:\Users\anav2\Desktop\OpenGL\glm-0.9.9.8;C:\Users\anav2\Desktop\OpenGL\assimp-3.1.1-win-binaries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\anav2\Desktop\OpenGL\glfw%283.3.4%29\lib;C:\Users\anav2\Desktop\OpenGL\assimp-3.1.1-win-binaries\lib64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -125,7 +125,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,20 +152,113 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assimp.dll" />
+    <None Include="back.fs" />
+    <None Include="back.vs" />
+    <None Include="backpack\backpack.mtl" />
     <None Include="FinalObjectShader.fs" />
     <None Include="lightShader.fs" />
     <None Include="lightShader.vs" />
+    <None Include="modelShader.fs" />
+    <None Include="modelShader.vs" />
     <None Include="objectShader.fs" />
+    <None Include="objectShader.gs" />
     <None Include="objectShader.vs" />
+    <None Include="PointDepthShader.fs" />
+    <None Include="PointDepthShader.gs" />
+    <None Include="PointDepthShader.vs" />
+    <None Include="PP.fs" />
+    <None Include="PP.vs" />
+    <None Include="Reflection.fs" />
+    <None Include="Reflection.vs" />
+    <None Include="Refraction.fs" />
+    <None Include="SimpleDepthShader.fs" />
+    <None Include="SimpleDepthShader.vs" />
+    <None Include="SkyBox.fs" />
+    <None Include="SkyBox.vs" />
+    <None Include="Sponza-master\sponza.mtl" />
+    <None Include="Sponza-master\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="backpack\ao.jpg" />
+    <Image Include="backpack\diffuse.jpg" />
+    <Image Include="backpack\normal.png" />
+    <Image Include="backpack\roughness.jpg" />
+    <Image Include="backpack\specular.jpg" />
+    <Image Include="skybox\back.jpg" />
+    <Image Include="skybox\bottom.jpg" />
+    <Image Include="skybox\front.jpg" />
+    <Image Include="skybox\left.jpg" />
+    <Image Include="skybox\right.jpg" />
+    <Image Include="skybox\top.jpg" />
+    <Image Include="Sponza-master\background.tga" />
+    <Image Include="Sponza-master\background_ddn.tga" />
+    <Image Include="Sponza-master\chain_texture.tga" />
+    <Image Include="Sponza-master\chain_texture_ddn.tga" />
+    <Image Include="Sponza-master\lion.tga" />
+    <Image Include="Sponza-master\lion2_ddn.tga" />
+    <Image Include="Sponza-master\lion_ddn.tga" />
+    <Image Include="Sponza-master\spnza_bricks_a_ddn.tga" />
+    <Image Include="Sponza-master\spnza_bricks_a_diff.tga" />
+    <Image Include="Sponza-master\sponza_arch_ddn.tga" />
+    <Image Include="Sponza-master\sponza_arch_diff.tga" />
+    <Image Include="Sponza-master\sponza_ceiling_a_ddn.tga" />
+    <Image Include="Sponza-master\sponza_ceiling_a_diff.tga" />
+    <Image Include="Sponza-master\sponza_column_a_ddn.tga" />
+    <Image Include="Sponza-master\sponza_column_a_diff.tga" />
+    <Image Include="Sponza-master\sponza_column_b_ddn.tga" />
+    <Image Include="Sponza-master\sponza_column_b_diff.tga" />
+    <Image Include="Sponza-master\sponza_column_c_ddn.tga" />
+    <Image Include="Sponza-master\sponza_column_c_diff.tga" />
+    <Image Include="Sponza-master\sponza_curtain_blue_diff.tga" />
+    <Image Include="Sponza-master\sponza_curtain_ddn.tga" />
+    <Image Include="Sponza-master\sponza_curtain_diff.tga" />
+    <Image Include="Sponza-master\sponza_curtain_green_diff.tga" />
+    <Image Include="Sponza-master\sponza_details_ddn.tga" />
+    <Image Include="Sponza-master\sponza_details_diff.tga" />
+    <Image Include="Sponza-master\sponza_fabric_blue_diff.tga" />
+    <Image Include="Sponza-master\sponza_fabric_ddn.tga" />
+    <Image Include="Sponza-master\sponza_fabric_diff.tga" />
+    <Image Include="Sponza-master\sponza_fabric_green_diff.tga" />
+    <Image Include="Sponza-master\sponza_flagpole_ddn.tga" />
+    <Image Include="Sponza-master\sponza_flagpole_diff.tga" />
+    <Image Include="Sponza-master\sponza_floor_a_ddn.tga" />
+    <Image Include="Sponza-master\sponza_floor_a_diff.tga" />
+    <Image Include="Sponza-master\sponza_roof_ddn.tga" />
+    <Image Include="Sponza-master\sponza_roof_diff.tga" />
+    <Image Include="Sponza-master\sponza_thorn_ddn.tga" />
+    <Image Include="Sponza-master\sponza_thorn_diff.tga" />
+    <Image Include="Sponza-master\vase_ddn.tga" />
+    <Image Include="Sponza-master\vase_dif.tga" />
+    <Image Include="Sponza-master\vase_hanging.tga" />
+    <Image Include="Sponza-master\vase_hanging_ddn.tga" />
+    <Image Include="Sponza-master\vase_plant.tga" />
+    <Image Include="Sponza-master\vase_round.tga" />
+    <Image Include="Sponza-master\vase_round_ddn.tga" />
     <Image Include="textures\container.png" />
     <Image Include="textures\container2_specular.png" />
+    <Image Include="textures\get.png" />
+    <Image Include="textures\hardwood.jpg" />
     <Image Include="textures\matrix.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="backpack\source_attribution.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="backpack\backpack.obj">
+      <FileType>Document</FileType>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Sponza-master\sponza.obj">
+      <FileType>Document</FileType>
+    </Text>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
