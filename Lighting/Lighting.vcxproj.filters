@@ -142,6 +142,18 @@
     <None Include="PointDepthShader.fs">
       <Filter>Resource Files\Shaders</Filter>
     </None>
+    <None Include="GaussianBlur.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="G-Buffer.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="G-Buffer.vs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="DeferredLighting.fs">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="backpack\ao.jpg">
@@ -322,6 +334,12 @@
       <Filter>Resource Files\Textures</Filter>
     </Image>
     <Image Include="textures\hardwood.jpg">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="textures\brickwall.jpg">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="textures\brickwall_normal.jpg">
       <Filter>Resource Files\Textures</Filter>
     </Image>
   </ItemGroup>

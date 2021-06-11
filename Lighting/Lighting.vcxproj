@@ -162,7 +162,11 @@
     <None Include="back.fs" />
     <None Include="back.vs" />
     <None Include="backpack\backpack.mtl" />
+    <None Include="DeferredLighting.fs" />
     <None Include="FinalObjectShader.fs" />
+    <None Include="G-Buffer.fs" />
+    <None Include="G-Buffer.vs" />
+    <None Include="GaussianBlur.fs" />
     <None Include="lightShader.fs" />
     <None Include="lightShader.vs" />
     <None Include="modelShader.fs" />
@@ -241,6 +245,8 @@
     <Image Include="Sponza-master\vase_plant.tga" />
     <Image Include="Sponza-master\vase_round.tga" />
     <Image Include="Sponza-master\vase_round_ddn.tga" />
+    <Image Include="textures\brickwall.jpg" />
+    <Image Include="textures\brickwall_normal.jpg" />
     <Image Include="textures\container.png" />
     <Image Include="textures\container2_specular.png" />
     <Image Include="textures\get.png" />

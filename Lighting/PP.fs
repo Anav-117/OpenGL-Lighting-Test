@@ -4,13 +4,22 @@ out vec4 FragColor;
 in vec2 TexCoord;
 
 uniform sampler2D screenTexture;
+//uniform sampler2D bloomTexture;
+//uniform float exposure;
 
 const float offset = 1.0 / 300.0;
 
 vec3 ApplyKernel(float kernel[9]);
 
 void main() {
-    vec3 col = vec3(texture(screenTexture, TexCoord));
+    vec3 HDRcol = vec3(texture(screenTexture, TexCoord));
+    //vec3 Bloom = vec3(texture(bloomTexture, TexCoord));
+
+    //HDRcol += Bloom;
+
+    //Tone Mapping
+    //vec3 mapped = vec3(1.0) - exp(-HDRcol* exposure);
+
     //float kernel[9] = float[] (
     //    1.0 / 16, 2.0 / 16, 1.0 / 16,
     //    2.0 / 16, 4.0 / 16, 2.0 / 16,
@@ -19,7 +28,7 @@ void main() {
 
     //col = ApplyKernel(kernel);
 
-	FragColor = vec4(col, 1.0f);
+	FragColor = vec4(HDRcol, 1.0f);
     //float depthValue = texture(screenTexture, TexCoord).r;
     //FragColor = vec4(vec3(depthValue), 1.0);
 }
