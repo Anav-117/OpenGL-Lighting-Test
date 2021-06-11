@@ -61,6 +61,7 @@ void main() {
 	vec3 viewDir = normalize(viewPos - FragPos);
 	//Directional Light
 	lighting += CalculateDirectionalLight(dirlight, Normal, Albedo);
+
 	for (int i=0; i<NR_LIGHTS; i++) {
 		//diffuse
 		vec3 lightDir = normalize(lights[i].Position - FragPos);
