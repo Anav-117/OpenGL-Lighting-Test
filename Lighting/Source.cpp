@@ -424,8 +424,8 @@ int main() {
 	glViewport(0, 0, SHADOW_SIZE, SHADOW_SIZE);
 	glBindFramebuffer(GL_FRAMEBUFFER, DepthMapFrameBuffer);
 	glClear(GL_DEPTH_BUFFER_BIT);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_FRONT);
+	//glEnable(GL_CULL_FACE);
+	//glCullFace(GL_FRONT);
 
 	glm::mat4 lightmodel = glm::mat4(1.0f);
 	lightmodel = glm::translate(lightmodel, glm::vec3(0.0f, 0.0f, 0.0f)); // translate it down so it's at the center of the scene
